@@ -30,4 +30,22 @@ public class AlbumServiceImpl implements AlbumService {
 		return result;
 	}
 
+	@Override
+	public Album findAlbumById(Integer codeAlbum) {
+		Album result = (Album) this.sessionFactory.getCurrentSession().get(Album.class, codeAlbum);
+		return result;
+	}
+
+	@Override
+	public void createAlbum(Album album) {
+		this.sessionFactory.getCurrentSession().save(album);
+		
+	}
+
+	@Override
+	public void deleteAlbum(Album album) {
+		this.sessionFactory.getCurrentSession().delete(album);
+		
+	}
+
 }

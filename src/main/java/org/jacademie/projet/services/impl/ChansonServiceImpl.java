@@ -1,11 +1,10 @@
 package org.jacademie.projet.services.impl;
 
-import java.util.ArrayList;
 import java.util.Collection;
 
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
-import org.jacademie.projet.domain.Album;
+import org.jacademie.projet.domain.Artiste;
 import org.jacademie.projet.domain.Chanson;
 import org.jacademie.projet.services.ChansonService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,5 +28,25 @@ public class ChansonServiceImpl implements ChansonService {
 
 		return result;
 	}
+
+	@Override
+	public Chanson findChansonById(Integer id) {
+		Chanson result = (Chanson) this.sessionFactory.getCurrentSession().get(Chanson.class, id);
+		return result;
+	}
+
+	@Override
+	public void createChanson(Chanson chanson) {
+		this.sessionFactory.getCurrentSession().save(chanson);
+		
+	}
+
+	@Override
+	public void deleteChanson(Chanson chanson) {
+		this.sessionFactory.getCurrentSession().delete(chanson);
+		
+	}
+
+	
 
 }

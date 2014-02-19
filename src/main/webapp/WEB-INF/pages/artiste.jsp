@@ -8,23 +8,23 @@
 <title>Hello</title>
 </head>
 <body>
-<h1>Liste</h1>
-<table>
-<tr>
-	
-	<th>Artiste</th>
-	<th>code</th>
-	
-</tr>
-<c:forEach var="artist" items="${artists}">
-<tr>
-	<th><a href="<c:url value="album.do">
-	<c:param name="codeArtiste" value="${artist.codeArtiste}"/>
-	</c:url>"><c:out value="${artist.nom}"></c:out></a></th>
-	<th><c:out value="${artist.codeArtiste}"></c:out></th>
-</tr>
-</c:forEach>
+	<h1>Liste</h1>
+	<table>
+		<tr>
 
-</table>
+			<th>Artiste</th>
+
+		</tr>
+		<c:forEach var="artist" items="${artists}">
+			<tr>
+				<th><a
+					href="<c:url value="album.do">
+	<c:param name="codeArtiste" value="${artist.codeArtiste}"/>
+	</c:url>"><c:out
+							value="${artist.nom}"></c:out></a></th>
+			</tr>
+		</c:forEach>
+
+	</table>
 </body>
 </html>

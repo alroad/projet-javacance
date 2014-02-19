@@ -19,12 +19,6 @@
 
 
 <tr>
-	<th><c:out value="${album.nom}"></c:out></th>
-	
-	
-</tr>
-
-<tr>
 	<th><a href="<c:url value="chanson.do">
 	<c:param name="codeAlbum" value="${album.codeAlbum}"/>
 	</c:url>"><c:out value="${album.nom}"></c:out></a></th>

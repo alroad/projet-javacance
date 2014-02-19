@@ -3,23 +3,31 @@ package org.jacademie.projet.services.impl;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import org.hibernate.Query;
+import org.hibernate.SessionFactory;
 import org.jacademie.projet.domain.Album;
 import org.jacademie.projet.domain.Chanson;
 import org.jacademie.projet.services.ChansonService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class ChansonServiceImpl implements ChansonService {
 
+	@Autowired
+	private SessionFactory sessionFactory;
+	
 	@Override
 	public Collection<Chanson> retrieveChansons(Integer codeAlbum) {
-		Collection<Chanson> chansons = new ArrayList<Chanson>();
-		Chanson chanson1= new Chanson("PLoup sing1");
-		chansons.add(chanson1);
-		Chanson chanson2= new Chanson("LLLLLLLLL sing1");
-		chansons.add(chanson2);
+		
+		Query query = this.sessionFactory.getCurrentSession().createQuery("FROM Chanson WHERE CODE_ALBUM = :param");
+		query.setInteger("param", codeAlbum);
 
-		return chansons;
+		Collection<Chanson> result = query.list();
+
+		return result;
 	}
 
 }

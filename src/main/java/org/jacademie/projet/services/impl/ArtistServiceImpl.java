@@ -22,4 +22,5 @@ public class ArtistServiceImpl implements ArtistService{
 		return artistes;
 	
 	}
+
 }

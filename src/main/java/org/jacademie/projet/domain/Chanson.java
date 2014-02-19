@@ -6,6 +6,7 @@ public class Chanson {
 	private Integer numeroChanson;
 	private String titre;
 	private Integer duree;
+	private Album album;
 	
 	public Chanson() {
 		super();
@@ -56,7 +57,18 @@ public class Chanson {
 	public void setDuree(Integer duree) {
 		this.duree = duree;
 	}
-		
+
+	public Album getAlbum() {
+		return album;
+	}
+
+	public void setAlbum(Album album) {
+		this.album = album;
+	}
+
+	
+
+
 	
 
 }

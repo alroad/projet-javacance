@@ -3,26 +3,31 @@ package org.jacademie.projet.services.impl;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import org.hibernate.Query;
+import org.hibernate.SessionFactory;
 import org.jacademie.projet.domain.Album;
 import org.jacademie.projet.domain.Artiste;
 import org.jacademie.projet.services.AlbumService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class AlbumServiceImpl implements AlbumService {
 
+	@Autowired
+	private SessionFactory sessionFactory;
+	
 	@Override
 	public Collection<Album> retrieveAlbums(Integer codeArtiste) {
 
-		Collection<Album> albums = new ArrayList<Album>();
-		Album album1= new Album("PLoup");
-		album1.setCodeAlbum(1);
-		albums.add(album1);
-		Album album2= new Album("LLLLLLLLL");
-		album2.setCodeAlbum(2);
-		albums.add(album2);
+		Query query = this.sessionFactory.getCurrentSession().createQuery("FROM Album WHERE CODE_ARTISTE = :param");
+		query.setInteger("param", codeArtiste);
 
-		return albums;
+		Collection<Album> result = query.list();
+
+		return result;
 	}
 
 }

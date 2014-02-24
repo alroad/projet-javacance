@@ -24,6 +24,7 @@ public class AlbumController {
 	
 	public String displayAlbum(@PathParam("id_artiste") Integer codeArtiste, Model model){
 		model.addAttribute("albums",this.albumService.retrieveAlbums(codeArtiste));
+		model.addAttribute("codeArtiste", codeArtiste);
 		return "album";
 	}
 	
@@ -38,8 +39,21 @@ public class AlbumController {
 	}
 	
 	@RequestMapping(value="/registerAlbum", method= RequestMethod.POST)
-	public ModelAndView submitForm(@ModelAttribute("album")Album album){
-		return new ModelAndView("album-registered","album",album);
+	public String submitForm(@ModelAttribute("album")Album album, @ModelAttribute("codeArtiste")Integer codeArtiste,Model model){
+		Artiste artist = new Artiste();
+		artist.setCodeArtiste(codeArtiste);
+		album.setArtiste(artist);
+		this.albumService.createAlbum(album);
+		return this.displayAlbum(album.getArtiste().getCodeArtiste(), model);
+	}
+	
+	@RequestMapping(value="/deleteAlbum", method= RequestMethod.GET)
+	public String deleteArtiste(@ModelAttribute("codeAlbum")Integer codeAlbum, Model model){
+		
+		Album album = this.albumService.findAlbumById(codeAlbum);
+		Integer codeArtiste = album.getArtiste().getCodeArtiste();
+		this.albumService.deleteAlbum(album);
+		return this.displayAlbum(codeArtiste,model);
 	}
 
 }

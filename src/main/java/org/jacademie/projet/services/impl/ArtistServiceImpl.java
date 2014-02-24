@@ -19,15 +19,6 @@ public class ArtistServiceImpl implements ArtistService{
 	
 	public Collection<Artiste> retrievedAllArtist(){
 		
-		//this.sessionFactory.getCurrentSession().cre
-//		Collection<Artiste> artistes = new ArrayList<Artiste>();
-//		Artiste artiste1= new Artiste("Garridal");
-//		artiste1.setCodeArtiste(1);
-//		artistes.add(artiste1);
-//		Artiste artiste2= new Artiste("Blachere");
-//		artiste2.setCodeArtiste(2);
-//		artistes.add(artiste2);
-		
 		return this.sessionFactory.getCurrentSession().createCriteria(Artiste.class).list();
 	
 	}

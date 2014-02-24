@@ -8,20 +8,16 @@
 <title>Enregistre un artiste</title>
 </head>
 <body>
-
-
 <form:form modelAttribute="artiste" method="POST" action="registerArtiste.do">
 	<label for="nom"><spring:message code="label.nom"/></label>
 	<form:input path="nom" id="nom"/>
-	<br>
-	
-	<label for="codeArtiste"><spring:message code="label.codeArtiste"/></label>
-	<form:input path="codeArtiste" id="codeArtiste"/>
 	<br>
 	
 	
 	<button type="submit"><spring:message code="label.registerArtiste"/></button>
 	
 </form:form>
+
+
 </body>
 </html>

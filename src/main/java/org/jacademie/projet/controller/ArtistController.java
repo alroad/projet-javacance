@@ -1,5 +1,6 @@
 package org.jacademie.projet.controller;
 
+import org.apache.log4j.Logger;
 import org.jacademie.projet.domain.Artiste;
 import org.jacademie.projet.services.ArtistService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,8 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class ArtistController {
 
+	private static Logger logger = Logger.getLogger(ArtistController.class);
+	
 	@Autowired
 	private ArtistService artisteService;
 
@@ -33,9 +36,25 @@ public class ArtistController {
 		return new Artiste();
 	}
 	
+//	@RequestMapping(value="/registerArtiste", method= RequestMethod.POST)
+//	public ModelAndView submitForm(@ModelAttribute("artiste")Artiste artiste){
+//		this.artisteService.createArtist(artiste);
+//		return new ModelAndView("artiste-registered","artiste",artiste);
+//	}
+	
 	@RequestMapping(value="/registerArtiste", method= RequestMethod.POST)
-	public ModelAndView submitForm(@ModelAttribute("artiste")Artiste artiste){
-		return new ModelAndView("artiste-registered","artiste",artiste);
+	public String submitForm(@ModelAttribute("artiste")Artiste artiste,Model model){
+		this.artisteService.createArtist(artiste);
+		return this.displayArtistes(model);
 	}
+	
+	@RequestMapping(value="/deleteArtiste", method= RequestMethod.GET)
+	public String deleteArtiste(@ModelAttribute("codeArtiste")Integer codeArtiste, Model model){
+		
+		Artiste artiste = this.artisteService.findArtistById(codeArtiste);
+		this.artisteService.deleteArtist(artiste);
+		return this.displayArtistes(model);
+	}
+
 
 }

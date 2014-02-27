@@ -16,4 +16,6 @@ public interface ChansonService {
 	public void createChanson(Chanson chanson);
 
 	public void deleteChanson(Chanson chanson);
+
+	public void updateChanson(Chanson chanson);
 }

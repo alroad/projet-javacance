@@ -40,4 +40,9 @@ public class ArtistServiceImpl implements ArtistService{
 		this.sessionFactory.getCurrentSession().delete(artiste);
 		
 	}
+
+	@Override
+	public void updateArtist(Artiste artiste) {
+		this.sessionFactory.getCurrentSession().update("Artiste", artiste);
+	}
 }

@@ -36,11 +36,6 @@ public class ArtistController {
 		return new Artiste();
 	}
 	
-//	@RequestMapping(value="/registerArtiste", method= RequestMethod.POST)
-//	public ModelAndView submitForm(@ModelAttribute("artiste")Artiste artiste){
-//		this.artisteService.createArtist(artiste);
-//		return new ModelAndView("artiste-registered","artiste",artiste);
-//	}
 	
 	@RequestMapping(value="/registerArtiste", method= RequestMethod.POST)
 	public String submitForm(@ModelAttribute("artiste")Artiste artiste,Model model){
@@ -55,6 +50,18 @@ public class ArtistController {
 		this.artisteService.deleteArtist(artiste);
 		return this.displayArtistes(model);
 	}
-
-
+	
+	@RequestMapping(value="/updateArtiste", method= RequestMethod.GET)
+	public String updateArtist(@ModelAttribute("codeArtiste")Integer codeArtiste, Model model){
+		model.addAttribute("codeArtiste", codeArtiste);
+		return "updateArtiste";
+	}
+	
+	@RequestMapping(value="/updateArtiste", method= RequestMethod.POST)
+	public String formUpdate(@ModelAttribute("artiste")Artiste artiste,Model model){
+		Artiste oldArtiste = this.artisteService.findArtistById(artiste.getCodeArtiste());
+		oldArtiste = artiste;
+		this.artisteService.updateArtist(oldArtiste);
+		return this.displayArtistes(model);
+	}
 }

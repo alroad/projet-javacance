@@ -14,4 +14,5 @@ public interface ArtistService {
 	
 	public void deleteArtist(Artiste artiste);
 
+	public void updateArtist(Artiste artiste);
 }

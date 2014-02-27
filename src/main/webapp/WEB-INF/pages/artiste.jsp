@@ -1,6 +1,6 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-<%@taglib  prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 
 <html>
@@ -15,18 +15,29 @@
 
 			<th>Artiste</th>
 			<th>Supprimer</th>
+			<th>Edition</th>
 
 		</tr>
 		<c:forEach var="artist" items="${artists}">
 			<tr>
-				<th><a href="<c:url value="album.do">
+				<th><a
+					href="<c:url value="album.do">
 					<c:param name="codeArtiste" value="${artist.codeArtiste}"/>
 					</c:url>">
-					<c:out value="${artist.nom}"></c:out></a></th>
+						<c:out value="${artist.nom}"></c:out>
+				</a></th>
 
-				<th><a href="<c:url value="deleteArtiste.do">
+				<th><a
+					href="<c:url value="deleteArtiste.do">
 					<c:param name="codeArtiste" value="${artist.codeArtiste}"/>
-					</c:url>">X</a></th>
+					</c:url>">X</a>
+				</th>
+
+				<th><a
+					href="<c:url value="updateArtiste.do">
+					<c:param name="codeArtiste" value="${artist.codeArtiste}"/> 
+					</c:url>">Editer</a>
+				</th>
 			</tr>
 		</c:forEach>
 
@@ -34,14 +45,17 @@
 	</table>
 
 
-<form:form modelAttribute="artiste" method="POST" action="registerArtiste.do">
-	<label for="nom"><spring:message code="label.nom"/></label>
-	<form:input path="nom" id="nom"/>
-	<br>
-	
-	
-	<button type="submit"><spring:message code="label.register"/></button>
-	
-</form:form>
+	<form:form modelAttribute="artiste" method="POST"
+		action="registerArtiste.do">
+		<label for="nom"><spring:message code="label.nom" /></label>
+		<form:input path="nom" id="nom" />
+		<br>
+
+
+		<button type="submit">
+			<spring:message code="label.register" />
+		</button>
+
+	</form:form>
 </body>
 </html>

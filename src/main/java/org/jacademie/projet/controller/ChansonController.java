@@ -2,6 +2,7 @@ package org.jacademie.projet.controller;
 
 import javax.ws.rs.PathParam;
 
+import org.hsqldb.server.OdbcUtil;
 import org.jacademie.projet.domain.Album;
 import org.jacademie.projet.domain.Artiste;
 import org.jacademie.projet.domain.Chanson;
@@ -54,6 +55,22 @@ public class ChansonController {
 		Integer codeAlbum = chanson.getAlbum().getCodeAlbum();
 		this.chansonService.deleteChanson(chanson);
 		return this.displayChanson(codeAlbum, model);
+	}
+	
+	@RequestMapping(value="/updateChanson", method= RequestMethod.GET)
+	public String updateChanson(@ModelAttribute("id")Integer id, Model model){
+		model.addAttribute("id", id);
+		return "updateChanson";
+	}
+	
+	@RequestMapping(value="/updateChanson", method= RequestMethod.POST)
+	public String formUpdate(@ModelAttribute("chanson")Chanson chanson,Model model){
+		Chanson oldChanson = this.chansonService.findChansonById(chanson.getId());
+		oldChanson.setDuree(chanson.getDuree());
+		oldChanson.setNumeroChanson(chanson.getNumeroChanson());
+		oldChanson.setTitre(chanson.getTitre());
+		this.chansonService.updateChanson(oldChanson);
+		return this.displayChanson(oldChanson.getAlbum().getCodeAlbum(), model);
 	}
 
 }

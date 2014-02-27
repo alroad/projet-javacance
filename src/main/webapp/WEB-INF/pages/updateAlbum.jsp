@@ -5,17 +5,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Enregistre un artiste</title>
+<title>Modifier un album</title>
 </head>
 <body>
-<form:form modelAttribute="artiste" method="POST" action="registerArtiste.do">
+
+<form:form modelAttribute="album" method="POST" action="updateAlbum.do">
 	<label for="nom"><spring:message code="label.nom"/></label>
 	<form:input path="nom" id="nom"/>
 	<br>
-	<input name="codeArtiste" type="hidden" value="<c:out value="${codeArtiste}"></c:out>"/>
+	<input name="codeAlbum" type="hidden" value="<c:out value="${codeAlbum}"></c:out>"/>
 	
-	
-	<button type="submit"><spring:message code="label.registerArtiste"/></button>
+	<button type="submit"><spring:message code="label.update"/></button>
 	
 </form:form>
 

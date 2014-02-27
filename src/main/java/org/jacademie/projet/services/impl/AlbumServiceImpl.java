@@ -50,7 +50,7 @@ public class AlbumServiceImpl implements AlbumService {
 
 	@Override
 	public void updateAlbum(Album album) {
-		this.sessionFactory.getCurrentSession().merge("Album" ,album);
+		this.sessionFactory.getCurrentSession().update("Album" ,album);
 		
 	}
 

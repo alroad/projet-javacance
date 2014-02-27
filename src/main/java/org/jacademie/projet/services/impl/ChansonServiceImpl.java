@@ -49,7 +49,7 @@ public class ChansonServiceImpl implements ChansonService {
 
 	@Override
 	public void updateChanson(Chanson chanson) {
-		this.sessionFactory.getCurrentSession().merge("Chanson", chanson);
+		this.sessionFactory.getCurrentSession().update("Chanson", chanson);
 		
 	}
 

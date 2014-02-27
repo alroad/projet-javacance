@@ -1,6 +1,6 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-<%@taglib  prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 
 <html>
@@ -15,21 +15,31 @@
 
 			<th>Album</th>
 			<th>Supprimer</th>
+			<th>Edition</th>
 
 		</tr>
 		<c:forEach var="album" items="${albums}">
 
 
 			<tr>
-				<th><a href="<c:url value="chanson.do">
+				<th><a
+					href="<c:url value="chanson.do">
 					<c:param name="codeAlbum" value="${album.codeAlbum}"/>
 					</c:url>">
-					<c:out value="${album.nom}"></c:out></a></th>
+						<c:out value="${album.nom}"></c:out>
+				</a></th>
 
 
-				<th><a href="<c:url value="deleteAlbum.do">
+				<th><a
+					href="<c:url value="deleteAlbum.do">
 					<c:param name="codeAlbum" value="${album.codeAlbum}"/>
 					</c:url>">X</a></th>
+
+				<th><a
+					href="<c:url value="updateAlbum.do">
+					<c:param name="codeAlbum" value="${album.codeAlbum}"/> 
+					</c:url>">Editer</a>
+				</th>
 			</tr>
 		</c:forEach>
 
@@ -42,7 +52,8 @@
 		<label for="nom"><spring:message code="label.nom" /></label>
 		<form:input path="nom" id="nom" />
 		<br>
-		<input name="codeArtiste" type="hidden" value="<c:out value="${codeArtiste}"></c:out>"/>
+		<input name="codeArtiste" type="hidden"
+			value="<c:out value="${codeArtiste}"></c:out>" />
 
 
 		<button type="submit">

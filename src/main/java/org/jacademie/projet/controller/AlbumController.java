@@ -56,4 +56,18 @@ public class AlbumController {
 		return this.displayAlbum(codeArtiste,model);
 	}
 
+	
+	@RequestMapping(value="/updateAlbum", method= RequestMethod.GET)
+	public String updateAlbum(@ModelAttribute("codeAlbum")Integer codeAlbum, Model model){
+		model.addAttribute("codeAlbum", codeAlbum);
+		return "updateAlbum";
+	}
+	
+	@RequestMapping(value="/updateAlbum", method= RequestMethod.POST)
+	public String formUpdate(@ModelAttribute("album")Album album,Model model){
+		Album oldAlbum = this.albumService.findAlbumById(album.getCodeAlbum());
+		oldAlbum.setNom(album.getNom());
+		this.albumService.updateAlbum(oldAlbum);
+		return this.displayAlbum(oldAlbum.getArtiste().getCodeArtiste(), model);
+	}
 }

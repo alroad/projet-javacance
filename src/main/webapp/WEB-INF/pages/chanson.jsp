@@ -15,6 +15,7 @@
 
 			<th>Chanson</th>
 			<th>Supprimer</th>
+			<th>Edition</th>
 
 		</tr>
 		<c:forEach var="chanson" items="${chansons}">
@@ -25,6 +26,13 @@
 					href="<c:url value="deleteChanson.do">
 					<c:param name="id" value="${chanson.id}"/>
 					</c:url>">X</a></th>
+					
+					
+				<th><a
+					href="<c:url value="updateChanson.do">
+					<c:param name="id" value="${chanson.id}"/> 
+					</c:url>">Editer</a>
+				</th>
 			</tr>
 		</c:forEach>
 

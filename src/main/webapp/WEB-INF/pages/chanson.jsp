@@ -6,16 +6,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Chansons</title>
+<title><spring:message code="label.titre"/></title>
 </head>
 <body>
-	<h1>Liste</h1>
+	<h1><spring:message code="liste.chanson" /></h1>
 	<table>
 		<tr>
 
-			<th>Chanson</th>
-			<th>Supprimer</th>
-			<th>Edition</th>
+			<th><spring:message code="colonne.chanson" /></th>
+			<th><spring:message code="colonne.suppr" /></th>
+			<th><spring:message code="colonne.editer" /></th>
 
 		</tr>
 		<c:forEach var="chanson" items="${chansons}">
@@ -31,13 +31,13 @@
 				<th><a
 					href="<c:url value="updateChanson.do">
 					<c:param name="id" value="${chanson.id}"/> 
-					</c:url>">Editer</a>
+					</c:url>"><spring:message code="edit" /></a>
 				</th>
 			</tr>
 		</c:forEach>
 
 	</table>
-	
+	<br/>
 	<form:form modelAttribute="chanson" method="POST"
 		action="registerChanson.do">
 		<label for="titre"><spring:message code="label.titre" /></label>

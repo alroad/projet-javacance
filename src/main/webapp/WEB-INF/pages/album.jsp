@@ -6,16 +6,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Album</title>
+<title><spring:message code="label.titre"/></title>
 </head>
 <body>
-	<h1>Liste des albums</h1>
+	<h1><spring:message code="liste.album" /></h1>
 	<table>
 		<tr>
 
-			<th>Album</th>
-			<th>Supprimer</th>
-			<th>Edition</th>
+			<th><spring:message code="colonne.album" /></th>
+			<th><spring:message code="colonne.suppr" /></th>
+			<th><spring:message code="colonne.editer" /></th>
 
 		</tr>
 		<c:forEach var="album" items="${albums}">
@@ -38,7 +38,7 @@
 				<th><a
 					href="<c:url value="updateAlbum.do">
 					<c:param name="codeAlbum" value="${album.codeAlbum}"/> 
-					</c:url>">Editer</a>
+					</c:url>"><spring:message code="edit" /></a>
 				</th>
 			</tr>
 		</c:forEach>
@@ -46,7 +46,7 @@
 
 	</table>
 
-
+<br/>
 	<form:form modelAttribute="album" method="POST"
 		action="registerAlbum.do">
 		<label for="nom"><spring:message code="label.nom" /></label>

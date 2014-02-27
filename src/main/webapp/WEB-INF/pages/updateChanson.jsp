@@ -5,9 +5,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Modifier une chanson</title>
+<title><spring:message code="label.titre"/></title>
 </head>
 <body>
+<h1><spring:message code="update.chanson" /></h1>
 
 <form:form modelAttribute="chanson" method="POST" action="updateChanson.do">
 	<label for="titre"><spring:message code="label.titre" /></label>

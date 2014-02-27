@@ -5,10 +5,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Modifier un album</title>
+<title><spring:message code="label.titre"/></title>
 </head>
 <body>
-
+<h1><spring:message code="update.album" /></h1>
 <form:form modelAttribute="album" method="POST" action="updateAlbum.do">
 	<label for="nom"><spring:message code="label.nom"/></label>
 	<form:input path="nom" id="nom"/>
